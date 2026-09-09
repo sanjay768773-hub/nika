@@ -1,785 +1,696 @@
-:root {
-  --bg: #101115;
-  --surface: #17181e;
-  --surface-light: #202128;
-  --text: #f5f3ef;
-  --muted: #a5a3aa;
-  --pink: #f0a8bd;
-  --pink-dark: #bd718d;
-  --lavender: #c7b7f4;
-  --line: rgba(255, 255, 255, 0.1);
-  --radius: 22px;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background:
-    radial-gradient(circle at 80% 0%, rgba(195, 150, 205, 0.1), transparent 28rem),
-    var(--bg);
-  color: var(--text);
-  font-family: "Manrope", sans-serif;
-  overflow-x: hidden;
-}
-
-button,
-input {
-  font: inherit;
-}
-
-button,
-a {
-  -webkit-tap-highlight-color: transparent;
-}
-
-button {
-  border: 0;
-  cursor: pointer;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.ambient {
-  position: fixed;
-  width: 28rem;
-  height: 28rem;
-  border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.08;
-  pointer-events: none;
-  z-index: -1;
-}
-
-.ambient-one {
-  background: var(--pink);
-  left: -15rem;
-  top: 25rem;
-}
-
-.ambient-two {
-  background: var(--lavender);
-  right: -15rem;
-  bottom: 5rem;
-}
-
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1240px;
-  margin: auto;
-  padding: 26px 30px;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  font-size: 15px;
-  font-weight: 800;
-  letter-spacing: 0.13em;
-}
-
-.brand i {
-  color: var(--pink);
-  font-style: normal;
-}
-
-.brand-mark {
-  color: var(--pink);
-  font-size: 21px;
-}
-
-.nav-links {
-  display: flex;
-  gap: 33px;
-  color: var(--muted);
-  font-size: 13px;
-}
-
-.nav-links a {
-  transition: color 0.2s ease;
-}
-
-.nav-links a:hover {
-  color: var(--text);
-}
-
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.icon-button {
-  background: transparent;
-  color: var(--text);
-  font-size: 30px;
-  line-height: 1;
-}
-
-.profile-button {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--pink), var(--lavender));
-  color: #2b2027;
-  font-size: 11px;
-  font-weight: 800;
-}
-
-.hero {
-  display: grid;
-  grid-template-columns: 0.95fr 1.05fr;
-  align-items: center;
-  gap: 50px;
-  max-width: 1240px;
-  min-height: 650px;
-  margin: auto;
-  padding: 55px 30px 90px;
-}
-
-.eyebrow {
-  color: var(--pink);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
-.hero h1 {
-  max-width: 600px;
-  margin: 19px 0;
-  font-family: "Playfair Display", serif;
-  font-size: clamp(54px, 7vw, 94px);
-  font-weight: 700;
-  letter-spacing: -0.07em;
-  line-height: 0.96;
-}
-
-.hero h1 span {
-  color: var(--pink);
-}
-
-.hero-text {
-  max-width: 460px;
-  color: var(--muted);
-  font-size: 15px;
-  line-height: 1.9;
-}
-
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 13px;
-  margin-top: 32px;
-}
-
-.primary-button,
-.secondary-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  min-height: 48px;
-  padding: 0 21px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 800;
-  transition: transform 0.25s ease, opacity 0.25s ease;
-}
-
-.primary-button {
-  background: var(--pink);
-  color: #2b2027;
-}
-
-.primary-button:hover,
-.secondary-button:hover {
-  transform: translateY(-3px);
-}
-
-.secondary-button {
-  border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.04);
-  color: var(--text);
-}
-
-.play-icon {
-  font-size: 10px;
-}
-
-.hero-meta {
-  display: flex;
-  gap: 30px;
-  margin-top: 49px;
-  color: var(--muted);
-  font-size: 11px;
-}
-
-.hero-meta strong {
-  display: block;
-  margin-bottom: 5px;
-  color: var(--text);
-  font-size: 17px;
-}
-
-.hero-art {
-  position: relative;
-  display: grid;
-  place-items: center;
-  min-height: 540px;
-}
-
-.sun-glow {
-  position: absolute;
-  width: 330px;
-  height: 330px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, rgba(240, 168, 189, 0.9), rgba(199, 183, 244, 0.5));
-  filter: blur(2px);
-  opacity: 0.6;
-}
-
-.hero-card {
-  position: relative;
-  z-index: 2;
-  width: min(390px, 78%);
-  height: 475px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 190px 190px 24px 24px;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
-  transform: rotate(3deg);
-}
-
-.hero-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.hero-card::after {
-  position: absolute;
-  content: "";
-  inset: 0;
-  background: linear-gradient(transparent 45%, rgba(7, 7, 12, 0.9));
-}
-
-.hero-card-overlay {
-  position: absolute;
-  z-index: 2;
-  right: 25px;
-  bottom: 26px;
-  left: 25px;
-}
-
-.hero-card-overlay p,
-.hero-card-overlay span {
-  color: #dfdbe1;
-  font-size: 10px;
-}
-
-.hero-card-overlay h3 {
-  margin: 7px 0;
-  font-family: "Playfair Display", serif;
-  font-size: 25px;
-}
-
-.hero-orbit {
-  position: absolute;
-  border: 1px solid rgba(240, 168, 189, 0.4);
-  border-radius: 50%;
-  transform: rotate(-25deg);
-}
-
-.orbit-one {
-  width: 560px;
-  height: 180px;
-}
-
-.orbit-two {
-  width: 510px;
-  height: 300px;
-  border-color: rgba(199, 183, 244, 0.35);
-  transform: rotate(48deg);
-}
-
-.floating-note {
-  position: absolute;
-  z-index: 3;
-  padding: 12px 15px;
-  border: 1px solid var(--line);
-  border-radius: 13px;
-  background: rgba(30, 29, 37, 0.8);
-  backdrop-filter: blur(15px);
-  color: var(--text);
-  font-size: 10px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
-}
-
-.note-one {
-  top: 80px;
-  right: 0;
-}
-
-.note-two {
-  bottom: 91px;
-  left: 0;
-  color: var(--lavender);
-}
-
-.content-section,
-.language-section,
-.watchlist-section {
-  max-width: 1240px;
-  margin: auto;
-  padding: 55px 30px;
-}
-
-.section-heading {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  margin-bottom: 27px;
-}
-
-h2 {
-  margin-top: 9px;
-  font-family: "Playfair Display", serif;
-  font-size: clamp(31px, 4vw, 48px);
-  letter-spacing: -0.045em;
-}
-
-.view-all {
-  color: var(--pink);
-  font-size: 12px;
-}
-
-.view-all span {
-  margin-left: 7px;
-  font-size: 17px;
-}
-
-.search-panel {
-  display: none;
-  gap: 10px;
-  margin: 22px 0;
-}
-
-.search-panel.open {
-  display: flex;
-}
-
-.search-panel input {
-  width: 100%;
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  outline: none;
-  background: var(--surface);
-  color: var(--text);
-  padding: 15px;
-}
-
-.search-panel button {
-  border-radius: 12px;
-  background: var(--surface-light);
-  color: var(--muted);
-  padding: 0 17px;
-}
-
-.filter-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 9px;
-  margin-bottom: 25px;
-}
-
-.filter-button {
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: transparent;
-  color: var(--muted);
-  padding: 9px 15px;
-  font-size: 11px;
-  transition: 0.2s ease;
-}
-
-.filter-button:hover,
-.filter-button.active {
-  border-color: var(--pink);
-  background: var(--pink);
-  color: #2b2027;
-}
-
-.anime-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
-}
-
-.anime-card {
-  overflow: hidden;
-  border: 1px solid transparent;
-  border-radius: var(--radius);
-  background: var(--surface);
-  cursor: pointer;
-  transition: transform 0.3s ease, border-color 0.3s ease;
-}
-
-.anime-card:hover {
-  border-color: rgba(240, 168, 189, 0.45);
-  transform: translateY(-7px);
-}
-
-.anime-poster {
-  position: relative;
-  height: 290px;
-  overflow: hidden;
-}
-
-.anime-poster img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-.anime-card:hover .anime-poster img {
-  transform: scale(1.06);
-}
-
-.rating {
-  position: absolute;
-  top: 13px;
-  left: 13px;
-  border-radius: 6px;
-  background: rgba(0, 0, 0, 0.6);
-  padding: 6px 8px;
-  color: #ffe7a4;
-  font-size: 10px;
-  font-weight: 800;
-}
-
-.card-content {
-  padding: 15px;
-}
-
-.card-content h3 {
-  margin-bottom: 6px;
-  font-family: "Playfair Display", serif;
-  font-size: 19px;
-}
-
-.card-content p {
-  color: var(--muted);
-  font-size: 10px;
-}
-
-.card-content span {
-  display: inline-block;
-  margin-top: 11px;
-  border-radius: 5px;
-  background: rgba(240, 168, 189, 0.12);
-  padding: 5px 7px;
-  color: var(--pink);
-  font-size: 9px;
-}
-
-.empty-state {
-  display: none;
-  padding: 45px;
-  color: var(--muted);
-  text-align: center;
-}
-
-.language-section {
-  border-top: 1px solid var(--line);
-}
-
-.language-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 13px;
-}
-
-.language-card {
-  display: flex;
-  min-height: 150px;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--surface);
-  color: var(--text);
-  transition: 0.25s ease;
-}
-
-.language-card:hover {
-  border-color: var(--pink);
-  background: var(--surface-light);
-  transform: translateY(-5px);
-}
-
-.language-symbol {
-  color: var(--pink);
-  font-family: "Playfair Display", serif;
-  font-size: 30px;
-}
-
-.language-card span:not(.language-symbol) {
-  font-size: 12px;
-  font-weight: 800;
-}
-
-.language-card small {
-  color: var(--muted);
-  font-size: 10px;
-}
-
-.watchlist-banner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 35px;
-  border: 1px solid rgba(240, 168, 189, 0.25);
-  border-radius: 26px;
-  background:
-    linear-gradient(110deg, rgba(240, 168, 189, 0.17), transparent 55%),
-    var(--surface);
-  padding: 40px;
-}
-
-.watchlist-banner p:not(.eyebrow) {
-  max-width: 480px;
-  margin-top: 12px;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.7;
-}
-
-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  max-width: 1240px;
-  margin: auto;
-  border-top: 1px solid var(--line);
-  padding: 32px 30px;
-  color: var(--muted);
-  font-size: 10px;
-}
-
-.modal {
-  position: fixed;
-  z-index: 20;
-  inset: 0;
-  display: none;
-  place-items: center;
-  background: rgba(5, 5, 9, 0.8);
-  padding: 20px;
-  backdrop-filter: blur(10px);
-}
-
-.modal.open {
-  display: grid;
-}
-
-.modal-card {
-  position: relative;
-  display: grid;
-  grid-template-columns: 0.85fr 1.15fr;
-  width: min(760px, 100%);
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 24px;
-  background: var(--surface);
-  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.5);
-}
-
-.modal-card > img {
-  width: 100%;
-  height: 390px;
-  object-fit: cover;
-}
-
-.modal-content {
-  align-self: center;
-  padding: 35px;
-}
-
-.modal-content h2 {
-  font-size: 38px;
-}
-
-.modal-content > p:not(.eyebrow) {
-  margin: 17px 0 20px;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.8;
-}
-
-.modal-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 25px;
-}
-
-.modal-tags span {
-  border-radius: 999px;
-  background: var(--surface-light);
-  padding: 7px 11px;
-  color: var(--lavender);
-  font-size: 10px;
-}
-
-.modal-close {
-  position: absolute;
-  z-index: 2;
-  top: 15px;
-  right: 15px;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  font-size: 22px;
-}
-
-@media (max-width: 900px) {
-  .hero {
-    grid-template-columns: 1fr;
-    padding-top: 35px;
-  }
-
-  .hero-art {
-    min-height: 510px;
-  }
-
-  .anime-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .language-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 650px) {
-  .navbar {
-    padding: 20px;
-  }
-
-  .nav-links {
-    display: none;
-  }
-
-  .hero,
-  .content-section,
-  .language-section,
-  .watchlist-section {
-    padding-right: 20px;
-    padding-left: 20px;
-  }
-
-  .hero {
-    padding-top: 35px;
-  }
-
-  .hero h1 {
-    font-size: 57px;
-  }
-
-  .hero-meta {
-    gap: 18px;
-  }
-
-  .hero-art {
-    min-height: 420px;
-  }
-
-  .hero-card {
-    height: 390px;
-  }
-
-  .orbit-one {
-    width: 360px;
-  }
-
-  .orbit-two {
-    width: 340px;
-  }
-
-  .floating-note {
-    font-size: 8px;
-  }
-
-  .note-one {
-    top: 20px;
-  }
-
-  .note-two {
-    bottom: 45px;
-  }
-
-  .anime-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 11px;
-  }
-
-  .anime-poster {
-    height: 230px;
-  }
-
-  .card-content {
-    padding: 11px;
-  }
-
-  .card-content h3 {
-    font-size: 16px;
-  }
-
-  .language-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .watchlist-banner {
-    align-items: flex-start;
-    flex-direction: column;
-    padding: 28px;
-  }
-
-  footer {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .modal-card {
-    grid-template-columns: 1fr;
-    max-height: 90vh;
-    overflow-y: auto;
-  }
-
-  .modal-card > img {
-    height: 240px;
-  }
-
-  .modal-content {
-    padding: 25px;
-  }
-}
+```html
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta
+    name="description"
+    content="Nika Sharo — தமிழ் anime உலகம். Anime-ஐ தேடி, தேர்வு செய்து, சட்டபூர்வமாக ஆன்லைனில் பாருங்கள்."
+  />
+
+  <meta name="theme-color" content="#101115" />
+
+  <title>Nika Sharo — தமிழ் Anime Universe</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Tamil:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <a class="brand" href="#home" aria-label="Nika Sharo முகப்பு">
+      <span class="brand-mark">✦</span>
+      <span>NIKA <i>SHARO</i></span>
+    </a>
+
+    <nav class="nav-links">
+      <a href="#home" data-i18n="navHome">முகப்பு</a>
+      <a href="#discover" data-i18n="navDiscover">கண்டறியுங்கள்</a>
+      <a href="#genres" data-i18n="navGenres">வகைகள்</a>
+      <a href="#watchlist" data-i18n="navList">எனது பட்டியல்</a>
+    </nav>
+
+    <div class="nav-actions">
+
+      <button
+        class="icon-button"
+        id="searchToggle"
+        aria-label="தேடலைத் திற"
+        title="தேடு"
+      >
+        ⌕
+      </button>
+
+      <button
+        class="language-toggle"
+        id="languageToggle"
+        aria-label="மொழியை மாற்று"
+      >
+        <span>அ</span>
+        <small>தமிழ்</small>
+      </button>
+
+      <button
+        class="profile-button"
+        id="profileButton"
+        aria-label="சுயவிவரம்"
+      >
+        NS
+      </button>
+
+    </div>
+  </header>
+
+  <main id="home">
+
+    <!-- HERO -->
+    <section class="hero">
+
+      <div class="hero-copy">
+
+        <p class="eyebrow" data-i18n="heroEyebrow">
+          ✦ உங்கள் anime உலகம்
+        </p>
+
+        <h1>
+          <span data-i18n="heroLineOne">மனதில்</span><br>
+          <span data-i18n="heroLineTwo">நிலைக்கும் கதைகள்.</span>
+        </h1>
+
+        <p class="hero-text" data-i18n="heroText">
+          அழகான உலகங்கள், மறக்க முடியாத கதாபாத்திரங்கள் மற்றும்
+          உங்களுக்குப் பிடித்த anime-களை ஒரே இடத்தில் கண்டறியுங்கள்.
+        </p>
+
+        <div class="hero-actions">
+
+          <button class="primary-button" id="exploreButton">
+            <span data-i18n="explore">இப்போது பார்க்கலாம்</span>
+            <span>→</span>
+          </button>
+
+          <button class="secondary-button" id="trailerButton">
+            <span class="play-icon">▶</span>
+            <span data-i18n="trailer">முன்னோட்டம்</span>
+          </button>
+
+        </div>
+
+        <div class="hero-meta">
+
+          <span>
+            <strong>10K+</strong>
+            <span data-i18n="titles">Anime</span>
+          </span>
+
+          <span>
+            <strong>40+</strong>
+            <span data-i18n="languages">மொழிகள்</span>
+          </span>
+
+          <span>
+            <strong>∞</strong>
+            <span data-i18n="adventures">சாகசங்கள்</span>
+          </span>
+
+        </div>
+
+      </div>
+
+      <div class="hero-art">
+
+        <div class="sun-glow"></div>
+        <div class="hero-orbit orbit-one"></div>
+        <div class="hero-orbit orbit-two"></div>
+
+        <div class="hero-card">
+
+          <img
+            id="heroImage"
+            src="https://image.tmdb.org/t/p/w780/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg"
+            alt="Featured anime"
+          />
+
+          <div class="hero-card-overlay">
+
+            <p data-i18n="featured">சிறப்பு தேர்வு</p>
+
+            <h3>Spirited Away</h3>
+
+            <span>
+              Fantasy · Adventure · 2001
+            </span>
+
+          </div>
+
+        </div>
+
+        <div class="floating-note note-one">
+          புதிய episodes ✦
+        </div>
+
+        <div class="floating-note note-two">
+          தமிழ் · English · 日本語
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- DISCOVER -->
+    <section class="content-section" id="discover">
+
+      <div class="section-heading">
+
+        <div>
+          <p class="eyebrow" data-i18n="curated">
+            உங்களுக்காக தேர்ந்தெடுக்கப்பட்டது
+          </p>
+
+          <h2 data-i18n="findWorld">
+            அடுத்த உலகத்தை கண்டறியுங்கள்
+          </h2>
+        </div>
+
+        <a href="#allAnime" class="view-all">
+          <span data-i18n="viewAll">அனைத்தையும் பார்க்க</span>
+          <span>→</span>
+        </a>
+
+      </div>
+
+
+      <!-- SEARCH -->
+      <div class="search-panel" id="searchPanel">
+
+        <div class="search-input-wrap">
+          <span>⌕</span>
+
+          <input
+            type="search"
+            id="searchInput"
+            placeholder="Anime, கதாபாத்திரம் அல்லது வகையைத் தேடுங்கள்..."
+            aria-label="Anime தேடல்"
+          />
+        </div>
+
+        <button id="clearSearch" data-i18n="clear">
+          அழி
+        </button>
+
+      </div>
+
+
+      <!-- FILTERS -->
+      <div class="filter-row" id="genres">
+
+        <button
+          class="filter-button active"
+          data-filter="All"
+          data-i18n="all"
+        >
+          அனைத்தும்
+        </button>
+
+        <button
+          class="filter-button"
+          data-filter="Trending"
+          data-i18n="trending"
+        >
+          பிரபலமாகும்
+        </button>
+
+        <button
+          class="filter-button"
+          data-filter="Popular"
+          data-i18n="popular"
+        >
+          பிரபலமானவை
+        </button>
+
+        <button
+          class="filter-button"
+          data-filter="New"
+          data-i18n="new"
+        >
+          புதியவை
+        </button>
+
+        <button
+          class="filter-button"
+          data-filter="Romance"
+          data-i18n="romance"
+        >
+          காதல்
+        </button>
+
+        <button
+          class="filter-button"
+          data-filter="Action"
+          data-i18n="action"
+        >
+          ஆக்ஷன்
+        </button>
+
+        <button
+          class="filter-button"
+          data-filter="Fantasy"
+          data-i18n="fantasy"
+        >
+          Fantasy
+        </button>
+
+        <button
+          class="filter-button"
+          data-filter="Comedy"
+          data-i18n="comedy"
+        >
+          நகைச்சுவை
+        </button>
+
+      </div>
+
+
+      <!-- ANIME GRID -->
+      <div
+        class="anime-grid"
+        id="animeGrid"
+        id="allAnime"
+      ></div>
+
+      <p
+        class="empty-state"
+        id="emptyState"
+      >
+        Anime எதுவும் கிடைக்கவில்லை.
+      </p>
+
+    </section>
+
+
+    <!-- LANGUAGE SECTION -->
+    <section class="language-section">
+
+      <div class="section-heading">
+
+        <div>
+          <p class="eyebrow" data-i18n="madeEveryone">
+            அனைவருக்காகவும்
+          </p>
+
+          <h2 data-i18n="watchYourWay">
+            உங்கள் மொழியில் பாருங்கள்
+          </h2>
+        </div>
+
+      </div>
+
+
+      <div class="language-grid">
+
+        <button
+          class="language-card language-filter"
+          data-language="Tamil"
+        >
+          <span class="language-symbol">த</span>
+          <span>தமிழ்</span>
+          <small>தமிழ் மொழி</small>
+        </button>
+
+        <button
+          class="language-card language-filter"
+          data-language="Japanese"
+        >
+          <span class="language-symbol">あ</span>
+          <span>日本語</span>
+          <small>ஜப்பானியம்</small>
+        </button>
+
+        <button
+          class="language-card language-filter"
+          data-language="English"
+        >
+          <span class="language-symbol">A</span>
+          <span>English</span>
+          <small>ஆங்கிலம்</small>
+        </button>
+
+        <button
+          class="language-card language-filter"
+          data-language="Hindi"
+        >
+          <span class="language-symbol">ह</span>
+          <span>हिन्दी</span>
+          <small>இந்தி</small>
+        </button>
+
+        <button
+          class="language-card language-filter"
+          data-language="Chinese"
+        >
+          <span class="language-symbol">中</span>
+          <span>中文</span>
+          <small>சீனம்</small>
+        </button>
+
+        <button
+          class="language-card language-filter"
+          data-language="Korean"
+        >
+          <span class="language-symbol">한</span>
+          <span>한국어</span>
+          <small>கொரியன்</small>
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- WATCHLIST -->
+    <section class="watchlist-section" id="watchlist">
+
+      <div class="watchlist-banner">
+
+        <div>
+
+          <p class="eyebrow" data-i18n="personalShelf">
+            உங்கள் தனிப்பட்ட பட்டியல்
+          </p>
+
+          <h2 data-i18n="keepFavorite">
+            பிடித்த anime-களை அருகில் வைத்திருங்கள்.
+          </h2>
+
+          <p data-i18n="watchlistText">
+            உங்களுக்குப் பிடித்த anime-களை பட்டியலில் சேர்த்து,
+            எப்போது வேண்டுமானாலும் மீண்டும் பாருங்கள்.
+          </p>
+
+        </div>
+
+        <button
+          class="secondary-button"
+          id="listButton"
+        >
+          <span data-i18n="openList">எனது பட்டியலைத் திற</span>
+          <span>→</span>
+        </button>
+
+      </div>
+
+
+      <div
+        class="watchlist-grid"
+        id="watchlistGrid"
+      ></div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <a class="brand" href="#home">
+      <span class="brand-mark">✦</span>
+      <span>NIKA <i>SHARO</i></span>
+    </a>
+
+    <p data-i18n="footerText">
+      கனவு காண்பவர்கள், பயணிகள் மற்றும் anime ரசிகர்களுக்காக.
+    </p>
+
+    <p>
+      © <span id="year"></span> Nika Sharo
+    </p>
+
+  </footer>
+
+
+  <!-- ANIME DETAILS MODAL -->
+  <div
+    class="modal"
+    id="animeModal"
+    aria-hidden="true"
+  >
+
+    <div class="modal-card">
+
+      <button
+        class="modal-close"
+        id="modalClose"
+        aria-label="மூடு"
+      >
+        ×
+      </button>
+
+      <img
+        id="modalImage"
+        src=""
+        alt=""
+      />
+
+      <div class="modal-content">
+
+        <p
+          class="eyebrow"
+          id="modalCategory"
+        ></p>
+
+        <h2 id="modalTitle"></h2>
+
+        <div class="modal-rating">
+          <span>★</span>
+          <strong id="modalRating"></strong>
+          <span>/ 10</span>
+        </div>
+
+        <p id="modalDescription"></p>
+
+        <div
+          class="modal-tags"
+          id="modalTags"
+        ></div>
+
+        <div
+          class="availability-badges"
+          id="modalAvailability"
+        ></div>
+
+        <div class="modal-actions">
+
+          <button
+            class="primary-button"
+            id="watchNowButton"
+          >
+            <span>▶</span>
+            <span data-i18n="watchNow">இப்போது பார்க்க</span>
+          </button>
+
+          <button
+            class="secondary-button"
+            id="modalListButton"
+          >
+            ＋ <span data-i18n="addList">பட்டியலில் சேர்</span>
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- WATCH PLAYER MODAL -->
+  <div
+    class="modal player-modal"
+    id="playerModal"
+    aria-hidden="true"
+  >
+
+    <div class="player-card">
+
+      <div class="player-header">
+
+        <div>
+          <p class="eyebrow">NIKA SHARO</p>
+          <h2 id="playerTitle">Anime</h2>
+        </div>
+
+        <button
+          class="modal-close"
+          id="playerClose"
+          aria-label="மூடு"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <div class="video-wrapper">
+
+        <video
+          id="animePlayer"
+          controls
+          playsinline
+          preload="metadata"
+        >
+          <source
+            id="videoSource"
+            src=""
+            type="video/mp4"
+          />
+
+          உங்கள் browser video-வை support செய்யவில்லை.
+        </video>
+
+      </div>
+
+
+      <div class="player-controls">
+
+        <button
+          class="secondary-button"
+          id="previousEpisode"
+        >
+          ← முந்தைய episode
+        </button>
+
+        <div class="episode-select-wrap">
+
+          <label for="episodeSelect">
+            Episode
+          </label>
+
+          <select id="episodeSelect"></select>
+
+        </div>
+
+        <button
+          class="secondary-button"
+          id="nextEpisode"
+        >
+          அடுத்த episode →
+        </button>
+
+      </div>
+
+      <p
+        class="player-note"
+        id="playerNote"
+      >
+        வீடியோ playback source உங்கள் சட்டபூர்வமான streaming/video URL-ஐ பயன்படுத்தும்.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- TRAILER MODAL -->
+  <div
+    class="modal"
+    id="trailerModal"
+    aria-hidden="true"
+  >
+
+    <div class="trailer-card">
+
+      <button
+        class="modal-close"
+        id="trailerClose"
+      >
+        ×
+      </button>
+
+      <div class="trailer-placeholder">
+
+        <span class="big-play">▶</span>
+
+        <h2 data-i18n="trailerTitle">
+          Nika Sharo-க்கு வரவேற்கிறோம்
+        </h2>
+
+        <p data-i18n="trailerText">
+          Anime உலகத்தை ஆராயுங்கள், உங்களுக்குப் பிடித்த கதைகளைத் தேர்வு செய்யுங்கள்.
+        </p>
+
+        <button
+          class="primary-button"
+          id="trailerExplore"
+        >
+          <span data-i18n="explore">இப்போது பார்க்கலாம்</span>
+          →
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- PROFILE MENU -->
+  <div
+    class="profile-menu"
+    id="profileMenu"
+    aria-hidden="true"
+  >
+
+    <div class="profile-avatar">NS</div>
+
+    <strong>Nika Sharo</strong>
+
+    <span data-i18n="animeDreamer">
+      Anime ரசிகர்
+    </span>
+
+    <div class="profile-stats">
+      <div>
+        <strong id="profileListCount">0</strong>
+        <small>பட்டியல்</small>
+      </div>
+
+      <div>
+        <strong>∞</strong>
+        <small>கதைகள்</small>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- TOAST -->
+  <div
+    class="toast"
+    id="toast"
+    role="status"
+    aria-live="polite"
+  ></div>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
+```
