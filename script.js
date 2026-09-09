@@ -2141,3 +2141,10 @@ renderWatchlist();
 
 updateProfileCount();
 ```
+const animeData = [
+    {
+        title: "Attack on Titan",
+        image: "images/attack-on-titan.jpg",
+        video: "videos/episode1.mp4"
+    }
+];
