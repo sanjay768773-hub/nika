@@ -2101,3 +2101,16 @@ footer {
   }
 }
 ```
+.hero {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(5, 5, 10, 0.9),
+            rgba(5, 5, 10, 0.35)
+        ),
+        url("images/attack-on-titan.jpg");
+
+    background-size: cover;
+    background-position: center;
+    min-height: 650px;
+}
