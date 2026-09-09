@@ -2148,3 +2148,7 @@ const animeData = [
         video: "videos/episode1.mp4"
     }
 ];
+<video id="animePlayer" controls width="100%">
+    <source src="videos/episode1.mp4" type="video/mp4">
+    Your browser does not support video playback.
+</video>
